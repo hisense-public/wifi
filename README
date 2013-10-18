@@ -1,1 +1,4 @@
 first create the repository.
+clone a repo:
+git clone https://github.com/hisense-public/wifi.git -b android-4.2 r1
+
