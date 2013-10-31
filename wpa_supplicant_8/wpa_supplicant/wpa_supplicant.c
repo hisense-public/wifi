@@ -673,6 +673,9 @@ void wpa_supplicant_set_state(struct wpa_supplicant *wpa_s,
 		wpa_drv_set_supp_port(wpa_s, 1);
 #endif /* IEEE8021X_EAPOL */
 		wpa_s->after_wps = 0;
+#ifdef CONFIG_ANDROID_4_2_PERSISTENT_IOT
+		wpa_s->android_persistent_iot = 0;
+#endif //CONFIG_ANDROID_4_2_PERSISTENT_IOT
 #ifdef CONFIG_P2P
 		wpas_p2p_completed(wpa_s);
 #endif /* CONFIG_P2P */

@@ -31,6 +31,8 @@ endif
 
 ifeq ($(BOARD_WLAN_DEVICE), bcmdhd)
 L_CFLAGS += -DANDROID_P2P
+###add by wju
+L_CFLAGS += -DCONFIG_ANDROID_4_2_PERSISTENT_IOT
 endif
 
 ifeq ($(BOARD_WLAN_DEVICE), qcwcn)
@@ -257,6 +259,10 @@ endif
 ifdef CONFIG_WIFI_DISPLAY
 L_CFLAGS += -DCONFIG_WIFI_DISPLAY
 OBJS += wifi_display.c
+endif
+
+ifdef CONFIG_CLEAR_TIE_BREAKER
+L_CFLAGS += -DCONFIG_CLEAR_TIE_BREAKER
 endif
 
 ifdef CONFIG_HS20

@@ -12,6 +12,9 @@ PKG_CONFIG ?= pkg-config
 
 CFLAGS += -I../src
 CFLAGS += -I../src/utils
+//wju
+CFLAGS += -DANDROID -DANDROID_P2P -DCONFIG_ANDROID_4_2_PERSISTENT_IOT
+
 
 -include .config
 

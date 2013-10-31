@@ -705,7 +705,27 @@ int p2p_add_device(struct p2p_data *p2p, const u8 *addr, int freq, int level,
 			freq, msg.ds_params ? *msg.ds_params : -1);
 	}
 	if (scan_res) {
-		dev->listen_freq = freq;
+	//wju add by wju begin
+		if(dev->listen_freq) 
+		{
+			if(freq == 2412 || freq == 2437 || freq == 2462)
+			{				
+				dev->listen_freq = freq;
+			}	
+			else
+			{
+				wpa_printf(MSG_INFO, "%s, freq(%d) is not 1,6,11, don't update to listen_freq", __func__, freq);
+			}
+
+			wpa_printf(MSG_INFO, "%s, listen_freq=%d", __func__, dev->listen_freq);
+		}
+		else
+		{
+			wpa_printf(MSG_INFO, "%s, freq -> listen_freq=%d", __func__, freq);
+			dev->listen_freq = freq;
+		}
+//wju add by wju end
+
 		if (msg.group_info)
 			dev->oper_freq = freq;
 	}
@@ -2951,6 +2971,8 @@ static void p2p_go_neg_req_cb(struct p2p_data *p2p, int success)
 	 * channel.
 	 */
 	p2p_set_state(p2p, P2P_CONNECT);
+	
+	//wju notice !!!!!!!!!!!!
 #ifdef ANDROID_P2P
 	p2p_set_timeout(p2p, 0, 350000);
 #else

@@ -554,6 +554,9 @@ struct wpa_supplicant {
 	int p2p_go_intent;
 	int p2p_connect_freq;
 	struct os_time p2p_auto_started;
+#ifdef CONFIG_ANDROID_4_2_PERSISTENT_IOT
+	u8 android_persistent_iot;
+#endif //CONFIG_ANDROID_4_2_PERSISTENT_IOT
 #endif /* CONFIG_P2P */
 
 	struct wpa_ssid *bgscan_ssid;
